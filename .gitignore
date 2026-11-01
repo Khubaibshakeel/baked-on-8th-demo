@@ -3,4 +3,5 @@
 !/site/
 !/.gitignore
 !/netlify.toml
+!/.github/
 **/__pycache__/
