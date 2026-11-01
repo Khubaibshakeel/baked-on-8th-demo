@@ -756,10 +756,10 @@ p, li { text-wrap: pretty; }
 .notes-panel ol + h4 { margin-top: 18px; }
 .review-toggle .rt-short { display: none; }
 @media (max-width: 900px) {
-  .review-toggle { top: 84px; bottom: auto; right: 10px; min-height: 44px; padding: 0 12px; font-size: 12.5px; gap: 6px; }
+  .review-toggle { top: 140px; bottom: auto; right: 10px; min-height: 44px; padding: 0 12px; font-size: 12.5px; gap: 6px; }
   .review-toggle .rt-long { display: none; }
   .review-toggle .rt-short { display: inline; }
-  .notes-panel { top: 126px; bottom: auto; right: 10px; max-height: calc(100vh - 220px); }
+  .notes-panel { top: 192px; bottom: auto; right: 10px; max-height: calc(100vh - 290px); }
 }
 
 /* ---------- Their story (homepage) ---------- */

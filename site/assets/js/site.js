@@ -55,6 +55,10 @@
     }
     return 'soon';
   };
+  // same-day ordering is open only before today's online cutoff, on a day the shop is open (holiday closures included).
+  // Past that, never promise a pickup day: the ordering site shows the next available time.
+  const sameDayOpen = () => { const n = nashNow(), h = hoursOn(n.day, n.ymd); return !!h && n.sec < h.cut; };
+  const sameDayLine = () => (sameDayOpen() ? 'Order it online for pickup today.' : 'Order online to see the next available pickup time.');
   window.BO8 = { shop: SHOP };
 
   // ---------- Sprinkle texture shared by strips ----------
@@ -203,6 +207,7 @@
       if (canOrderToday) clock.classList.remove('is-after');
     }
     $$('[data-hours] li[data-day]').forEach((li) => li.classList.toggle('today', !closure && li.dataset.day.split(',').includes(n.day)));
+    $$('[data-sameday-when]').forEach((el) => { el.textContent = canOrderToday ? 'Order it online for pickup today.' : 'Order online to see the next available pickup time.'; });
     const callBtn = $('.action-bar a.call');
     if (callBtn) {
       let sub = $('small', callBtn);
@@ -373,7 +378,7 @@
       // a standard same-day cake (its usual frosting, a same-day size, not gluten-friendly) can be ordered online today
       const match = done && !gf.checked && SAMEDAY.sizes.includes(sz.dataset.short) && SAMEDAY.cakes.find((c) => c.flavor === fl.value && c.frosting === fr.value);
       const offer = $('[data-sameday-offer]', out);
-      if (offer) { offer.hidden = !match; if (match) $('b', offer).textContent = `This one’s on our same-day menu (${match.name}).`; }
+      if (offer) { offer.hidden = !match; if (match) { $('b', offer).textContent = `This one’s on our same-day menu (${match.name}).`; $('[data-sameday-when]', offer).textContent = sameDayLine(); } }
       // phones: "Red velvet · 8″ · from $68" stays in reach while choosing
       const bits = [fl ? fl.value : (fr ? fr.value : ''), sz ? sz.dataset.short : ''].filter(Boolean);
       peek(fl || fr || sz ? `${bits.join(' · ')}${sz ? ` · from $${sz.dataset.price}` : ' · pick a size for a price'}` : '');
@@ -440,7 +445,7 @@
       const v = el.value.trim();
       if (el.required && !v) msg = wrap.dataset.required || 'Please fill this in.';
       else if (el.type === 'email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) msg = 'Please enter a valid email address.';
-      else if (el.type === 'tel' && v && !/^\+?[\d\s().-]+$/.test(v) || el.type === 'tel' && v && (v.replace(/\D/g, '').length < 7 || v.replace(/\D/g, '').length > 15)) msg = 'Please enter a phone number (7 to 15 digits; a + for international is fine).';
+      else if (el.type === 'tel' && v && (!/^\+?[\d\s().-]+$/.test(v) || v.replace(/\D/g, '').length < 7 || v.replace(/\D/g, '').length > 15)) msg = el.required ? 'Please enter a valid phone number so we can call you.' : 'Please enter a phone number (7 to 15 digits; a + for international is fine).';
       else if (el.type === 'date' && v && v < minDate) msg = 'Please choose a date in the future.';
       else if (el.type === 'number' && v && (+v < 1 || +v > 1000)) msg = 'Please enter a guest count between 1 and 1000.';
       $('.err', wrap).textContent = msg;
@@ -459,7 +464,18 @@
       const d = JSON.parse(localStorage.getItem(DRAFT) || 'null');
       if (d) [...form.elements].forEach((el) => { if (!el.name || !(el.name in d)) return; if (el.type === 'checkbox') el.checked = d[el.name].includes(el.value); else el.value = d[el.name]; });
     } catch { /* ignore a broken draft */ }
-    updEst(); updDate();
+    // "Phone call" as the best way to reach you makes Phone required; back to Email, it's optional again
+    const phoneWrap = field('phone').closest('[data-field]');
+    const updPhoneReq = () => {
+      const need = field('contact').value === 'Phone call';
+      field('phone').required = need;
+      field('phone').setAttribute('aria-required', String(need));
+      const star = $('[data-phone-req]', form); if (star) star.hidden = !need;
+      if (need) phoneWrap.dataset.required = 'Please enter a valid phone number so we can call you.';
+      else { delete phoneWrap.dataset.required; if (phoneWrap.hasAttribute('data-invalid')) check(phoneWrap); }
+    };
+    field('contact').addEventListener('change', updPhoneReq);
+    updEst(); updDate(); updPhoneReq();
     form.addEventListener('input', saveDraft); form.addEventListener('change', saveDraft);
     fields.forEach((w) => $('input, textarea, select', w).addEventListener('blur', () => w.hasAttribute('data-touched') || $('input, textarea, select', w).value ? (w.setAttribute('data-touched', ''), check(w)) : null));
     form.addEventListener('submit', (e) => {

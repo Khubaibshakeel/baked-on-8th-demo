@@ -72,8 +72,9 @@ def head(title, desc):
 <meta name="theme-color" content="#FFFFFF">
 <meta name="robots" content="noindex, nofollow">
 <script>document.documentElement.classList.add('js');setTimeout(function(){{if(!window.BO8)document.documentElement.classList.remove('js')}},3000)</script>
-<link rel="icon" type="image/png" href="assets/img/logo-96.png">
-<link rel="apple-touch-icon" href="assets/img/logo-96.png">
+<link rel="icon" href="assets/img/favicon.ico?v={ver("assets/img/favicon.ico")}" sizes="any">
+<link rel="icon" type="image/png" href="assets/img/favicon.png?v={ver("assets/img/favicon.png")}">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v={ver("assets/img/apple-touch-icon.png")}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Figtree:wght@400;500;600;700&family=Shrikhand&display=swap" rel="stylesheet">
