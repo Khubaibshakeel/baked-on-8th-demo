@@ -1,0 +1,88 @@
+{
+  "month_label": "October / November",
+  "homepage_intro": "The seasonal menu changes every month or so. Here’s what’s in the case for fall.",
+  "menu_intro": "Fall flavors, in the shop while they last. The pumpkin spice cake is also on the ordering site.",
+  "items": [
+    {
+      "name": "Pumpkin spice cake",
+      "description": "Whole or sliced. Spiced pumpkin cake layered with cinnamon cream cheese, topped with cream cheese dollops.",
+      "short": "",
+      "photo": "/assets/img/seas-pumpkin-cake-800.webp",
+      "photo_description": "Pumpkin spice cake with cream cheese dollops and little pumpkins, held in front of green floral wallpaper",
+      "gluten_free": false,
+      "homepage_position": 0
+    },
+    {
+      "name": "Maple bacon scone",
+      "description": "A buttery maple scone, packed with bacon and spices.",
+      "short": "",
+      "photo": "/assets/img/seas-maple-bacon-scone-800.webp",
+      "photo_description": "Maple bacon scones on a pink background",
+      "gluten_free": false,
+      "homepage_position": 0
+    },
+    {
+      "name": "Pumpkin pop tart",
+      "description": "Flaky pop tart crust, spiced pumpkin filling, brown sugar cinnamon glaze.",
+      "short": "Flaky, buttery crust, spiced pumpkin, brown sugar cinnamon glaze.",
+      "photo": "/assets/img/seas-pumpkin-poptart-800.webp",
+      "photo_description": "Rows of pumpkin pop tarts with glaze and sprinkles on a pale pink background",
+      "gluten_free": false,
+      "homepage_position": 1
+    },
+    {
+      "name": "Maple pecan pound cake",
+      "description": "Maple cinnamon pound cake with chopped pecans and sweet maple glaze.",
+      "short": "Maple cinnamon pound cake, chopped pecans, sweet maple glaze.",
+      "photo": "/assets/img/seas-maple-pecan-pound-800.webp",
+      "photo_description": "Maple pecan pound cake slices with glaze on a teal background",
+      "gluten_free": false,
+      "homepage_position": 4
+    },
+    {
+      "name": "apple & honey oat bar",
+      "description": "Baked apples and oats, drizzled with honey glaze.",
+      "short": "",
+      "photo": "/assets/img/seas-gf-apple-oat-bar-800.webp",
+      "photo_description": "Apple and honey oat bars with glaze on a teal background",
+      "gluten_free": true,
+      "homepage_position": 0
+    },
+    {
+      "name": "Pumpkin bread",
+      "description": "Whole or sliced. Fresh-baked spiced pumpkin bread.",
+      "short": "",
+      "photo": "/assets/img/seas-pumpkin-bread-800.webp",
+      "photo_description": "Slices of pumpkin bread on a yellow background",
+      "gluten_free": false,
+      "homepage_position": 0
+    },
+    {
+      "name": "brown butter s’mores cookie",
+      "description": "Gluten-friendly chocolate chip base, mini marshmallows, graham cracker, ganache drizzle.",
+      "short": "Our gluten-friendly chocolate chip base with marshmallow, graham and ganache.",
+      "photo": "/assets/img/seas-gf-smores-cookie-800.webp",
+      "photo_description": "Gluten-friendly brown butter s’mores cookies with marshmallow and chocolate drizzle",
+      "gluten_free": true,
+      "homepage_position": 2
+    },
+    {
+      "name": "pumpkin streusel muffin",
+      "description": "A fluffy pumpkin spice muffin with streusel crumble.",
+      "short": "",
+      "photo": "/assets/img/seas-gf-pumpkin-muffin-800.webp",
+      "photo_description": "Gluten-friendly pumpkin streusel muffins on a pink background",
+      "gluten_free": true,
+      "homepage_position": 0
+    },
+    {
+      "name": "Apple butter brownie",
+      "description": "Fudgy chocolate brownie, cinnamon buttercream, apple butter, spiced streusel and salted caramel drizzle.",
+      "short": "Fudgy brownie, cinnamon buttercream, apple butter, streusel, salted caramel.",
+      "photo": "/assets/img/seas-apple-butter-brownie-800.webp",
+      "photo_description": "Apple butter brownies topped with streusel and caramel on a pink background",
+      "gluten_free": false,
+      "homepage_position": 3
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# Concept demo hosting: the pages in site/ are already built, so there's nothing to run.
+[build]
+  publish = "site"
+  command = ""
+
+# Keep the demo out of search engines (the pages also carry noindex and robots.txt blocks crawlers)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

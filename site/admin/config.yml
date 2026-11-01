@@ -1,0 +1,264 @@
+# Decap CMS settings for the Baked on 8th website editor (open /admin).
+# Paths are relative to the repository root, which holds the site/ folder. See site/content/README.md.
+
+# Demo on this computer: run `npx decap-server` in the folder that holds site/, then open http://127.0.0.1:5508/admin/
+local_backend: true
+
+# Once hosted (content/README.md): the owners log in with GitHub and every save is a commit that redeploys the site.
+backend:
+  name: github
+  repo: OWNER/baked-on-8th-site   # set when the site goes live
+  branch: main
+
+site_url: https://www.bakedon8th.com
+display_url: https://www.bakedon8th.com
+logo_url: ../assets/img/logo-160.webp
+
+media_folder: site/assets/uploads
+public_folder: /assets/uploads   # root-relative so the editor's previews resolve; the build makes page paths relative
+
+collections:
+  - name: menu
+    label: Menu
+    description: Everything on the Menu page and the homepage. Save, and the website updates in a minute or two.
+    editor: { preview: false }
+    files:
+      - name: seasonal
+        label: Seasonal menu
+        file: site/content/seasonal.json
+        description: The monthly seasonal menu. Shown on the Menu page, and up to 4 items on the homepage.
+        fields:
+          - { name: month_label, label: Months, widget: string, hint: 'Shown above the list, e.g. "October / November"' }
+          - { name: homepage_intro, label: Homepage sentence, widget: text, hint: "One or two sentences above the seasonal cards on the homepage." }
+          - { name: menu_intro, label: Menu page sentence, widget: text, hint: "One or two sentences above the seasonal list on the Menu page." }
+          - name: items
+            label: Seasonal items
+            label_singular: seasonal item
+            widget: list
+            summary: "{{fields.name}}"
+            hint: Drag to reorder. This is the order on the Menu page.
+            fields:
+              - { name: name, label: Name, widget: string, hint: 'e.g. "Pumpkin pop tart". Start with "GF" if it is gluten-free.' }
+              - { name: description, label: Description, widget: text, hint: "What's in it, in one sentence." }
+              - { name: short, label: Shorter description for the homepage, widget: string, required: false, hint: "Optional. Leave blank to use the description." }
+              - { name: photo, label: Photo, widget: image, choose_url: false, hint: "A photo from your phone is fine. The website makes smaller copies automatically." }
+              - { name: photo_description, label: Photo description, widget: string, hint: 'For people who use screen readers, e.g. "Rows of pumpkin pop tarts with glaze on a pink background".' }
+              - { name: gluten_free, label: Gluten-free, widget: boolean, default: false, hint: "Adds a GF tag to the photo." }
+              - { name: homepage_position, label: Spot on the homepage, widget: select, default: 0, hint: "Up to 4 items show on the homepage, in spots 1 to 4.",
+                  options: [{ label: "Not on the homepage", value: 0 }, { label: "1 (first)", value: 1 }, { label: "2", value: 2 }, { label: "3", value: 3 }, { label: "4 (last)", value: 4 }] }
+
+      - name: cakes
+        label: Everyday cakes
+        file: site/content/cakes.json
+        description: The cake cards on the Menu page and the homepage, and the same-day cake prices.
+        fields:
+          - name: same_day_sizes
+            label: Same-day cake sizes and prices
+            widget: list
+            summary: "{{fields.size}} · ${{fields.price}}"
+            allow_add: false
+            hint: The two sizes sold on the ordering site.
+            fields:
+              - { name: size, label: Size, widget: string, hint: 'e.g. 6″' }
+              - { name: price, label: Price ($), widget: number, value_type: int, min: 1 }
+              - { name: feeds, label: Feeds, widget: string, hint: 'e.g. 8–10' }
+          - name: cakes
+            label: Cakes
+            label_singular: cake
+            widget: list
+            summary: "{{fields.title}}"
+            hint: Drag to reorder. This is the order on the Menu page.
+            fields:
+              - { name: title, label: Name, widget: string }
+              - { name: id, label: Short name for the web address, widget: string, pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers and dashes only"], hint: 'e.g. "lemon-poppy". Set it once and leave it.' }
+              - { name: layers, label: Layers, widget: string, hint: 'Cake · frosting · topping, e.g. "Strawberry cake · strawberry buttercream · fancy sprinkles".' }
+              - { name: photo, label: Photo, widget: image, choose_url: false, hint: "A photo of the real cake. The website makes smaller copies automatically." }
+              - { name: photo_description, label: Photo description, widget: string, hint: "What the cake looks like, for screen readers." }
+              - { name: status, label: On the menu as, widget: select, default: everyday,
+                  options: [{ label: "Everyday (on the ordering site)", value: everyday }, { label: "Seasonal (on the ordering site for now)", value: seasonal }, { label: "Custom order only", value: custom }] }
+              - { name: seasonal_label, label: Seasonal tag, widget: string, required: false, hint: 'Only for seasonal cakes, e.g. "Oct/Nov seasonal".' }
+              - { name: gluten_free_on_custom, label: Can be made gluten-friendly on a custom order, widget: boolean, default: false }
+              - { name: planner_flavor, label: Matching flavor in the custom cake planner, widget: string, required: false, hint: 'e.g. "Red velvet". With the frosting below, the planner offers same-day ordering for this cake.' }
+              - { name: planner_frosting, label: Matching frosting in the planner, widget: string, required: false, hint: 'e.g. "Cream cheese frosting"' }
+              - { name: homepage_position, label: Spot on the homepage, widget: select, default: 0, hint: "Up to 6 cakes show on the homepage.",
+                  options: [{ label: "Not on the homepage", value: 0 }, { label: "1 (first)", value: 1 }, { label: "2", value: 2 }, { label: "3", value: 3 }, { label: "4", value: 4 }, { label: "5", value: 5 }, { label: "6 (last)", value: 6 }] }
+
+      - name: lists
+        label: Cookies, bars & treats
+        file: site/content/menu-lists.json
+        description: The cookie list and the bars, pop tarts and treats list on the Menu page.
+        fields:
+          - name: cookies
+            label: Cookies
+            label_singular: cookie
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Name, widget: string }
+              - &tag { name: tag, label: Tag, widget: select, required: false, default: "", options: [{ label: "None", value: "" }, { label: "Gluten-friendly", value: "Gluten-friendly" }, { label: "Vegan · gluten-friendly", value: "Vegan · gluten-friendly" }, { label: "Can change with the season", value: "Can change with the season" }], hint: "Only tag gluten-friendly or vegan items you also list that way in the shop." }
+              - { name: description, label: Description, widget: string }
+          - name: treats
+            label: "Bars, pop tarts & treats"
+            label_singular: treat
+            widget: list
+            summary: "{{fields.group}} · {{fields.name}}"
+            hint: Treats show in groups on the Menu page, in this order.
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: group, label: Group, widget: select, default: "Bars", options: ["Bars", "Pop tarts", "Brownies & Rice Krispies", "Breads, cakes & scones", "Other treats"] }
+              - *tag
+              - { name: description, label: Description, widget: string }
+
+      - name: todays-case
+        label: Today's case
+        file: site/content/todays-case.json
+        description: A photo of the case, posted from your phone in the morning. It shows at the top of the Menu page and hides itself after 3 days, so it is never stale.
+        fields:
+          - { name: photo, label: Photo of the case, widget: image, required: false, choose_url: false }
+          - { name: caption, label: One line about it, widget: string, required: false, hint: 'e.g. "Strawberry slices are back, plus pumpkin pop tarts."' }
+          - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", time_format: false, picker_utc: false, required: false, hint: "Press Now when you post a new photo." }
+
+      - name: custom
+        label: Custom cake menu
+        file: site/content/custom-cakes.json
+        description: The flavors, frostings, sizes and starting prices in the custom cake planner (How to order page). The flavors also appear in the wedding inquiry form.
+        fields:
+          - name: flavors
+            label: Cake flavors
+            label_singular: flavor
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Flavor, widget: string }
+              - { name: gluten_free, label: Can be made gluten-free, widget: boolean, default: false }
+          - name: frostings
+            label: Frostings
+            label_singular: frosting
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Frosting, widget: string }
+              - { name: can_be_dyed, label: Can be dyed custom colors, widget: boolean, default: false }
+          - name: sizes
+            label: Sizes and starting prices
+            label_singular: size
+            widget: list
+            summary: "{{fields.button}} · from ${{fields.from_price}}"
+            fields:
+              - { name: name, label: Size name, widget: string, hint: 'Used in the summary, e.g. "8″ round".' }
+              - { name: button, label: Size on the button, widget: string, hint: 'Short, e.g. "8″".' }
+              - { name: feeds, label: Feeds, widget: string, hint: 'e.g. "16–20" or "35+".' }
+              - { name: from_price, label: Starting price ($), widget: number, value_type: int, min: 1 }
+
+  - name: shop
+    label: Shop
+    editor: { preview: false }
+    files:
+      - name: hours
+        label: Hours & holiday closures
+        file: site/content/hours.json
+        description: Opening hours, online cutoffs and closed days. The "Open now / Closed now" sign and the cake clock follow these.
+        fields:
+          - name: rows
+            label: Opening hours
+            label_singular: set of days
+            widget: list
+            min: 1
+            required: true
+            summary: "{{fields.days}} · {{fields.opens}}–{{fields.closes}}"
+            fields:
+              - { name: days, label: Which days, widget: select, multiple: true, min: 1, required: true, options: [Mon, Tue, Wed, Thu, Fri, Sat, Sun], hint: 'The website writes "Monday – Saturday" for you.' }
+              - { name: opens, label: Opens, widget: datetime, required: true, format: "HH:mm", date_format: false, time_format: "h:mm a", picker_utc: false }
+              - { name: closes, label: Closes, widget: datetime, required: true, format: "HH:mm", date_format: false, time_format: "h:mm a", picker_utc: false }
+              - { name: online_cutoff, label: Online same-day cutoff, widget: datetime, required: true, format: "HH:mm", date_format: false, time_format: "h:mm a", picker_utc: false, hint: "Online orders placed before this time are for pickup today." }
+              - { name: note, label: Note, widget: hidden, default: "" }
+          - name: closures
+            label: Holiday closures
+            label_singular: closure
+            widget: list
+            summary: "{{fields.date}} · {{fields.message}}"
+            hint: On these days the website says "Closed today for …". Closures in the next six weeks also show under the hours.
+            fields:
+              - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", time_format: false, picker_utc: false }
+              - { name: message, label: Reason, widget: string, hint: 'Finishes the sentence "Closed today for …", e.g. "Thanksgiving".' }
+              - { name: note, label: Note, widget: hidden, default: "" }
+
+      - name: weddings
+        label: Wedding prices
+        file: site/content/weddings.json
+        description: Prices and phone hours on the Weddings page and the homepage.
+        fields:
+          - { name: price_per_serving, label: Starting price per serving ($), widget: number, value_type: float, min: 0, step: 0.25 }
+          - { name: delivery_from, label: Delivery from ($), widget: number, value_type: int, min: 0 }
+          - { name: consultation_days, label: Consultation days, widget: string, hint: 'e.g. "Monday–Friday"' }
+          - { name: consultation_days_short, label: Consultation days (short), widget: string, hint: 'e.g. "Mon–Fri"' }
+          - { name: consultation_hours, label: Consultation hours, widget: string, hint: 'e.g. "8am–3pm"' }
+
+  - name: whatson
+    label: Events
+    editor: { preview: false }
+    files:
+      - name: events
+        label: Events
+        file: site/content/events.json
+        description: Markets and pop-ups. Each event moves from "Upcoming" to "Past" on its own after its date.
+        fields:
+          - name: events
+            label: Events
+            label_singular: event
+            widget: list
+            summary: "{{fields.date}} · {{fields.title}}"
+            fields:
+              - { name: title, label: Event name, widget: string }
+              - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", time_format: false, picker_utc: false }
+              - { name: start_time, label: Starts, widget: datetime, format: "HH:mm", date_format: false, time_format: "h:mm a", picker_utc: false }
+              - { name: end_time, label: Ends, widget: datetime, format: "HH:mm", date_format: false, time_format: "h:mm a", picker_utc: false, required: false }
+              - { name: where, label: Where, widget: string, hint: 'e.g. "at the bakery" or "in front of the shop"' }
+              - { name: description, label: Description, widget: text }
+              - { name: image, label: Poster or photo, widget: image, required: false, choose_url: false }
+              - { name: image_description, label: Poster description, widget: string, required: false, hint: "What the poster says, for screen readers." }
+              - { name: link, label: Link for details, widget: string, required: false, hint: "Optional, e.g. a ticket page or an Instagram post." }
+              - { name: note_on_date, label: Note, widget: hidden, default: "" }
+              - { name: note_on_description, label: Note, widget: hidden, default: "" }
+
+  - name: story
+    label: About us
+    editor: { preview: false }
+    files:
+      - name: about
+        label: Our story (homepage)
+        file: site/content/about.json
+        description: The "Baking on 8th since 2018" section on the homepage.
+        fields:
+          - { name: heading, label: Heading, widget: string }
+          - { name: paragraphs, label: Paragraphs, label_singular: paragraph, widget: list, field: { name: text, label: Paragraph, widget: text }, hint: "2 or 3 short paragraphs. The last one is shown larger." }
+          - { name: photo, label: Photo of you both, widget: image, choose_url: false, hint: "A wide (landscape) photo works best; it spans the whole section." }
+          - { name: photo_description, label: Photo description, widget: string, hint: "What the photo shows, for screen readers." }
+          - { name: placeholder_label, label: Placeholder label, widget: string, required: false, hint: 'Shown on the photo until you choose your final photos. Clear it to remove the label.' }
+          - { name: sticker_photo, label: Sticker photo, widget: image, required: false, choose_url: false, hint: "The small taped photo on the corner (a cake works well)." }
+          - { name: sticker_caption, label: Sticker caption, widget: string, required: false, hint: 'e.g. "Since 2018"' }
+          - { name: photo_note, label: Note, widget: hidden, default: "" }
+          - name: ratings
+            label: Ratings
+            label_singular: rating
+            widget: list
+            summary: "{{fields.text}}"
+            fields:
+              - { name: text, label: Text, widget: string, hint: 'e.g. "4.6 stars from 609 ratings". Keep it up to date.' }
+              - { name: link, label: Link, widget: string, required: false }
+          - name: press
+            label: Press
+            label_singular: article
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Publication, widget: string }
+              - { name: link, label: Link to the article, widget: string }
+          - name: quote
+            label: One short press quote
+            widget: object
+            required: false
+            fields:
+              - { name: text, label: Quote, widget: string, required: false, hint: "One sentence, exactly as published." }
+              - { name: source, label: Publication, widget: string, required: false }
+              - { name: link, label: Link, widget: string, required: false }

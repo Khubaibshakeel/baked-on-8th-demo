@@ -1,0 +1,8 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Editor screenshot helper</title>
+<!-- Test tool: signs the local editor in (local_backend only) and opens one entry, so headless Chrome can capture it -->
+<script>
+localStorage.setItem('decap-cms-user', JSON.stringify({ backendName: 'proxy' }));
+location.replace('/admin/#/collections/' + (new URLSearchParams(location.search).get('entry') || 'menu/entries/seasonal'));
+</script>

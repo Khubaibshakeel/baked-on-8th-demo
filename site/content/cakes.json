@@ -1,0 +1,146 @@
+{
+  "same_day_sizes": [
+    {
+      "size": "6″",
+      "price": 56,
+      "feeds": "8–10"
+    },
+    {
+      "size": "8″",
+      "price": 68,
+      "feeds": "16–20"
+    }
+  ],
+  "cakes": [
+    {
+      "id": "confetti",
+      "title": "Confetti",
+      "layers": "Vanilla confetti cake · vanilla confetti buttercream · fancy sprinkles",
+      "photo": "/assets/img/cake-confetti-800.webp",
+      "photo_description": "pink combed buttercream, a ring of cream rosettes and rainbow sprinkles",
+      "status": "everyday",
+      "seasonal_label": "",
+      "gluten_free_on_custom": true,
+      "homepage_position": 1,
+      "planner_flavor": "Confetti",
+      "planner_frosting": "Vanilla buttercream"
+    },
+    {
+      "id": "classic",
+      "title": "Classic",
+      "layers": "Classic yellow cake · chocolate buttercream · fancy sprinkles",
+      "photo": "/assets/img/cake-classic-800.webp",
+      "photo_description": "chocolate combed buttercream with chocolate rosettes, sprinkles and sugar pearls",
+      "status": "everyday",
+      "seasonal_label": "",
+      "gluten_free_on_custom": false,
+      "homepage_position": 6,
+      "planner_flavor": "Yellow",
+      "planner_frosting": "Chocolate buttercream"
+    },
+    {
+      "id": "chocolate-ganache",
+      "title": "Chocolate Ganache",
+      "layers": "Chocolate cake · chocolate buttercream · chocolate ganache drip · fancy sprinkles",
+      "photo": "/assets/img/cake-ganache-800.webp",
+      "photo_description": "chocolate buttercream, a dark ganache drip and a crown of chocolate rosettes",
+      "status": "everyday",
+      "seasonal_label": "",
+      "gluten_free_on_custom": true,
+      "homepage_position": 3,
+      "planner_flavor": "Chocolate",
+      "planner_frosting": "Chocolate buttercream"
+    },
+    {
+      "id": "strawberry",
+      "title": "Strawberry",
+      "layers": "Strawberry cake · strawberry buttercream · fancy sprinkles",
+      "photo": "/assets/img/cake-strawberry-800.webp",
+      "photo_description": "pale pink strawberry buttercream with pink-cream rosettes and rainbow sprinkles",
+      "status": "everyday",
+      "seasonal_label": "",
+      "gluten_free_on_custom": true,
+      "homepage_position": 2,
+      "planner_flavor": "Strawberry",
+      "planner_frosting": "Strawberry buttercream"
+    },
+    {
+      "id": "cookies-and-cream",
+      "title": "Cookies & Cream",
+      "layers": "Chocolate cake · Oreo buttercream · chocolate ganache drip · cookie crumbs and fancy sprinkles",
+      "photo": "/assets/img/cake-cookies-cream-800.webp",
+      "photo_description": "speckled Oreo buttercream, a ganache drip, cookie crumbs and white rosettes",
+      "status": "everyday",
+      "seasonal_label": "",
+      "gluten_free_on_custom": false,
+      "homepage_position": 4,
+      "planner_flavor": "Chocolate",
+      "planner_frosting": "Cookies & cream buttercream"
+    },
+    {
+      "id": "vanilla-almond",
+      "title": "Vanilla Almond",
+      "layers": "Vanilla almond cake · vanilla buttercream · fancy sprinkles",
+      "photo": "/assets/img/cake-vanilla-almond-800.webp",
+      "photo_description": "ivory vanilla buttercream with white rosettes and a few rainbow sprinkles",
+      "status": "everyday",
+      "seasonal_label": "",
+      "gluten_free_on_custom": true,
+      "homepage_position": 0,
+      "planner_flavor": "Vanilla almond",
+      "planner_frosting": "Vanilla buttercream"
+    },
+    {
+      "id": "carrot",
+      "title": "Carrot",
+      "layers": "Carrot cake with pecans and coconut · cream cheese icing · no raisins",
+      "photo": "/assets/img/cake-carrot-800.webp",
+      "photo_description": "ivory cream cheese icing, white rosettes, sprinkles and a little piped carrot on top",
+      "status": "everyday",
+      "seasonal_label": "",
+      "gluten_free_on_custom": false,
+      "homepage_position": 0,
+      "planner_flavor": "Carrot",
+      "planner_frosting": "Cream cheese frosting"
+    },
+    {
+      "id": "red-velvet",
+      "title": "Red Velvet",
+      "layers": "Red velvet cake · cream cheese icing · fancy sprinkles",
+      "photo": "/assets/img/cake-red-velvet-800.webp",
+      "photo_description": "ivory cream cheese icing with white rosettes and red and white sprinkles",
+      "status": "everyday",
+      "seasonal_label": "",
+      "gluten_free_on_custom": false,
+      "homepage_position": 0,
+      "planner_flavor": "Red velvet",
+      "planner_frosting": "Cream cheese frosting"
+    },
+    {
+      "id": "pumpkin-spice",
+      "title": "Pumpkin Spice",
+      "layers": "Spiced pumpkin cake · cinnamon cream cheese · cream cheese dollops",
+      "photo": "/assets/img/seas-pumpkin-cake-800.webp",
+      "photo_description": "a tall cinnamon-speckled cake with cream cheese dollops and a ring of little pumpkins at the base",
+      "status": "seasonal",
+      "seasonal_label": "Oct/Nov seasonal",
+      "gluten_free_on_custom": false,
+      "homepage_position": 5,
+      "planner_flavor": "",
+      "planner_frosting": ""
+    },
+    {
+      "id": "peanut-butter-ganache",
+      "title": "Peanut Butter Ganache",
+      "layers": "Chocolate cake · peanut butter ganache filling · peanut butter buttercream · chocolate ganache drip",
+      "photo": "/assets/img/cake-pb-ganache-800.webp",
+      "photo_description": "peanut butter buttercream, a chocolate ganache drip and chocolate rosettes",
+      "status": "custom",
+      "seasonal_label": "",
+      "gluten_free_on_custom": false,
+      "homepage_position": 0,
+      "planner_flavor": "",
+      "planner_frosting": ""
+    }
+  ]
+}

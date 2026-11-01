@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!--@head How to order — Baked on 8th|Order a same-day cake online, walk in for slices and treats, or plan a custom cake with starting prices. Baked on 8th, Nashville.-->
+</head>
+<body>
+<!--@header order-->
+
+<main id="main">
+  <section class="page-hero photo">
+    <div class="wrap split">
+      <div>
+        <p class="crumbs hero-in"><a href="index.html">Home</a> / How to order</p>
+        <h1 class="hero-in" style="--d:.06s">How to get <span class="accent icing">your cake.</span></h1>
+        <p class="lede hero-in" style="--d:.14s">Three ways to get cake: same-day online, walk in, or a custom cake by phone. Here’s which one fits.</p>
+        <nav class="jump hero-in" style="--d:.2s" aria-label="Ways to get cake"><a href="#same-day">Same day, online</a><a href="#walk-in">Walk in</a><a href="#custom">Custom cake</a></nav>
+      </div>
+      <div class="stack-photos">
+        <div class="frame arch ratio-45 hero-wipe" style="--d:.1s"><img src="assets/img/cake-classic-1400.webp" srcset="assets/img/cake-classic-800.webp 800w, assets/img/cake-classic-1400.webp 1400w" sizes="(max-width: 900px) 90vw, 40vw" width="1400" height="1867" alt="A whole classic cake with chocolate combed buttercream, chocolate rosettes, sprinkles and sugar pearls" fetchpriority="high"></div>
+        <div class="frame ratio-34 b hero-pop" style="--d:.5s" data-parallax=".07"><img src="assets/img/cake-red-velvet-800.webp" width="800" height="1067" alt="A red velvet cake with ivory cream cheese icing, white rosettes and red and white sprinkles" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sprinkles" aria-hidden="true"></div>
+
+  <!-- Same day -->
+  <section class="section" id="same-day" aria-labelledby="sd-h">
+    <div class="wrap split">
+      <div>
+        <h2 id="sd-h" class="reveal">A whole cake, today.</h2>
+        <p class="lede reveal" style="--d:.1s">Our ordering site lists the cakes we have for today. Choose your flavor and size, pay online, and pick up at the shop.</p>
+        <ul class="menu-list reveal" style="columns:1;margin-top:20px">
+          <li data-source="Square ordering site, bakedon8th.square.site (checked 1 Nov 2026)"><b>{{SD1_SIZE}} cake · {{SD1_PRICE}}</b><span>Feeds {{SD1_FEEDS}}. {{SAMEDAY_FLAVORS}}.</span></li>
+          <li><b>{{SD2_SIZE}} cake · {{SD2_PRICE}}</b><span>Feeds {{SD2_FEEDS}}. Same flavors.</span></li>
+          <li><b>Cutoff</b><span>Order by {{CUT1}} {{DAYS1}} or {{CUT2}} {{DAYS2}}. Orders placed after the cutoff are for pickup the next day the shop is open.</span></li>
+          <li><b>Designs vary</b><span>Colors, design and sprinkles change day to day. No returns or exchanges once cakes leave the shop.</span></li>
+        </ul>
+        <div class="hero-actions reveal" style="margin-top:28px">
+          <a class="btn" href="{{SQUARE}}" data-cta="sameday"><span data-cta-label>Order for today</span> <!--@icon arrow--></a>
+          <a class="btn btn-ghost" href="menu.html#cakes">Compare flavors</a>
+        </div>
+        <p class="small muted reveal" style="margin-top:14px" data-note="Your Orders page's search description still says 'You cannot order online at this time', while Square takes same-day orders. Worth updating either way." data-source="Square ordering site, bakedon8th.square.site (checked 1 Nov 2026): orders after 6pm (Sun 3pm) are for next-day pickup">You’ll check out securely on Square, our ordering partner.</p>
+      </div>
+      <div class="stack-photos">
+        <div class="frame ratio-45 reveal-img"><img src="assets/img/cake-strawberry-800.webp" width="800" height="1067" alt="A strawberry cake with pink buttercream rosettes held up against a white brick wall" loading="lazy"></div>
+        <div class="frame ratio-34 b pop" style="--d:.3s" data-parallax=".07"><img src="assets/img/cake-cookies-cream-800.webp" width="800" height="1067" alt="Cookies and cream cake with a chocolate drip" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Walk in -->
+  <section class="section band-blush" id="walk-in" aria-labelledby="wi-h">
+    <div class="wrap split flip">
+      <div>
+        <h2 id="wi-h" class="reveal">Walk in: first come, first served.</h2>
+        <p class="lede reveal" style="--d:.1s" data-source="bakedon8th.com/orders: no call-ahead orders for pop tarts, cinnamon rolls or iced cookies (checked 1 Nov 2026)">Slices, cookies, bars, scones and the daily case are walk-in only. Some favorites go fast:</p>
+        <div class="notice reveal" style="margin-top:22px"><!--@icon clock--><p><b>We don’t take call-ahead orders for pop tarts, cinnamon rolls or iced cookies.</b> Get there early for the best pick.</p></div>
+        <p class="reveal" style="margin-top:22px"><a class="link" href="menu.html">See what we bake</a></p>
+      </div>
+      <div class="frame ratio-45 reveal-img"><img src="assets/img/home-offerings-800.webp" width="800" height="1067" alt="Rows of iced pop tarts with sprinkles on a pink background" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- Custom -->
+  <section class="section" id="custom" aria-labelledby="cu-h" style="scroll-margin-top:90px">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="reveal">
+          <h2 id="cu-h" class="h-with-cake">Plan a custom cake <img src="assets/illustrations/cake-pumpkin-spice-bare.svg" alt="" width="60" height="70"></h2>
+        </div>
+        <p class="lede reveal" style="--d:.1s" data-source="Custom Cake Menu graphic on bakedon8th.com/orders (checked 1 Nov 2026)">Pick a flavor, frosting and size to see a starting price, then <b>call us to place the order</b>. Please allow at least <b>3–4 weeks</b>. Design changes the final price.</p>
+      </div>
+
+      <div class="builder" data-planner data-sameday="{{SAMEDAY_MATCHES}}">
+        <form onsubmit="return false" aria-label="Custom cake planner">
+          <fieldset class="step reveal">
+            <legend><span class="step-n">Step 1</span> Cake flavor</legend>
+            <div class="chips">
+              <!--@planner flavors-->
+            </div>
+            <label style="display:flex;align-items:center;gap:10px;margin-top:16px;font-weight:600;min-height:44px"><input type="checkbox" name="gf" style="width:20px;height:20px;accent-color:var(--coral)"> Make it gluten-friendly</label>
+            <p class="small muted" data-gf-note aria-live="polite" style="margin:0"></p>
+          </fieldset>
+
+          <fieldset class="step reveal">
+            <legend><span class="step-n">Step 2</span> Frosting</legend>
+            <div class="chips">
+              <!--@planner frostings-->
+            </div>
+            <p class="small muted" data-dye-note aria-live="polite" style="margin:12px 0 0"></p>
+          </fieldset>
+
+          <fieldset class="step reveal">
+            <legend><span class="step-n">Step 3</span> Size</legend>
+            <div class="sizes">
+              <!--@planner sizes-->
+            </div>
+            <p class="small muted" style="margin:12px 0 0">Ask about other sizes when you call.</p>
+          </fieldset>
+
+          <fieldset class="step reveal">
+            <legend><span class="step-n">Step 4</span> Design</legend>
+            <p style="margin:8px 0 0;color:var(--ink-2)">Browse the <a class="link" href="menu.html#gallery">cake gallery</a> to see what we can do. Reference photos from anywhere are welcome (Pinterest, invites, party decor), but <b>we can’t accept most AI photos as inspiration</b>. Photos are only accepted by email, and we’ll give you the address once your order is started over the phone.</p>
+          </fieldset>
+        </form>
+
+        <div class="peek-bar" data-planner-peek aria-hidden="true" hidden><span data-peek-text></span><a href="#planner-summary">See summary</a></div>
+        <aside class="summary reveal" id="planner-summary" data-planner-summary aria-live="polite">
+          <h3>Your cake: starting price</h3>
+          <p class="price" data-sum="price">—</p>
+          <p class="small" style="opacity:.7;margin:0">Before design. Final price is confirmed by phone.</p>
+          <dl>
+            <dt>Flavor</dt><dd data-sum="flavor">Pick a flavor</dd>
+            <dt>Frosting</dt><dd data-sum="frosting">Pick a frosting</dd>
+            <dt>Size</dt><dd data-sum="size">Pick a size</dd>
+          </dl>
+          <div class="sameday-offer" data-sameday-offer hidden>
+            <p><b>This one’s on our same-day menu.</b> Order it online for pickup today.</p>
+            <a class="btn" href="{{SQUARE}}" data-cta="sameday"><span data-cta-label>Order for today</span> <!--@icon arrow--></a>
+            <p class="small" style="opacity:.8;margin:12px 0 0">Want it customized? Call us.</p>
+          </div>
+          <div data-call-script hidden class="call-script"><img src="assets/img/mascot-160.webp" width="160" height="218" alt=""><div><p class="small" style="opacity:.85;margin:0 0 6px">All set. When you call, you can say:</p><p style="margin:0;font-weight:600">“I’d like to order <span data-script></span>”</p></div></div>
+          <a class="btn" href="{{TEL}}"><!--@icon phone--> Call 615-933-1100</a>
+          <p class="small" style="opacity:.7;margin:12px 0 0" data-source="Custom Cake Menu graphic on bakedon8th.com/orders (checked 1 Nov 2026)">You must call first to place a custom order. Allow at least 3–4 weeks.</p>
+        </aside>
+      </div>
+      <p class="small muted reveal" style="margin-top:20px" data-note="Sizes, servings and starting prices come from the 'Custom Cake Menu' image on bakedon8th.com/orders. Confirm they're current.">Starting prices from our custom cake menu.</p>
+    </div>
+  </section>
+
+  <section class="section band-ink" aria-labelledby="party-h" style="padding-block:80px">
+    <div class="wrap split">
+      <div>
+        <h2 id="party-h">Balloons and party supplies, next door.</h2>
+        <p class="lede">Our party shop, Electric Mixer, has gifts and party goods for any occasion. Supplies can be ordered for same-day local pickup.</p>
+        <div class="hero-actions" style="margin-top:26px"><a class="btn" href="{{ELECTRIC_MIXER}}">Shop party supplies <!--@icon arrow--></a></div>
+      </div>
+      <div class="frame ratio-45 reveal-img" style="max-width:420px;justify-self:end;width:100%"><img src="assets/img/off-party-800.webp" width="800" height="1200" alt="A rainbow balloon arch and pastel party supplies in the Electric Mixer shop" loading="lazy"></div>
+    </div>
+  </section>
+</main>
+
+<!--@footer-->
+</body>
+</html>

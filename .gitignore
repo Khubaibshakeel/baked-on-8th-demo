@@ -1,0 +1,6 @@
+# Only the website goes in this repository. Pitch material, research and reference photos stay on this computer.
+/*
+!/site/
+!/.gitignore
+!/netlify.toml
+**/__pycache__/

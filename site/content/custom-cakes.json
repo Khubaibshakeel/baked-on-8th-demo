@@ -1,0 +1,92 @@
+{
+  "flavors": [
+    {
+      "name": "Confetti",
+      "gluten_free": true
+    },
+    {
+      "name": "Vanilla almond",
+      "gluten_free": true
+    },
+    {
+      "name": "Strawberry",
+      "gluten_free": true
+    },
+    {
+      "name": "Chocolate",
+      "gluten_free": true
+    },
+    {
+      "name": "Yellow",
+      "gluten_free": false
+    },
+    {
+      "name": "Red velvet",
+      "gluten_free": false
+    },
+    {
+      "name": "Carrot",
+      "gluten_free": false
+    }
+  ],
+  "frostings": [
+    {
+      "name": "Vanilla buttercream",
+      "can_be_dyed": true
+    },
+    {
+      "name": "Chocolate buttercream",
+      "can_be_dyed": false
+    },
+    {
+      "name": "Strawberry buttercream",
+      "can_be_dyed": false
+    },
+    {
+      "name": "Cookies & cream buttercream",
+      "can_be_dyed": false
+    },
+    {
+      "name": "Cream cheese frosting",
+      "can_be_dyed": false
+    }
+  ],
+  "sizes": [
+    {
+      "name": "6″ round",
+      "button": "6″",
+      "feeds": "8–10",
+      "from_price": 56
+    },
+    {
+      "name": "8″ round",
+      "button": "8″",
+      "feeds": "16–20",
+      "from_price": 68
+    },
+    {
+      "name": "10″ round",
+      "button": "10″",
+      "feeds": "30–36",
+      "from_price": 92
+    },
+    {
+      "name": "6″/8″ two-tier",
+      "button": "6″/8″ tiers",
+      "feeds": "35+",
+      "from_price": 140
+    },
+    {
+      "name": "8″/10″ two-tier",
+      "button": "8″/10″ tiers",
+      "feeds": "50+",
+      "from_price": 200
+    },
+    {
+      "name": "6″/8″/10″ three-tier",
+      "button": "6″/8″/10″",
+      "feeds": "60+",
+      "from_price": 250
+    }
+  ]
+}

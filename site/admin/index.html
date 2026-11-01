@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Update the website · Baked on 8th</title>
+<link rel="icon" type="image/png" href="../assets/img/logo-96.png">
+</head>
+<body>
+<!-- Decap CMS (free, open source): a form-based editor for the files in site/content/. See content/README.md. -->
+<script>
+  // Jumping straight from one entry to another (a pasted link, the back button) can show the new entry with the
+  // previous entry's empty fields. Reload on those jumps so every entry opens with its own saved content.
+  (function () {
+    var entry = function (h) { return /^#\/collections\/[^/]+\/entries\//.test(h || ''); };
+    var last = location.hash;
+    addEventListener('hashchange', function () {
+      if (entry(last) && entry(location.hash) && last !== location.hash) location.reload();
+      last = location.hash;
+    });
+  })();
+</script>
+<script src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"></script>
+</body>
+</html>

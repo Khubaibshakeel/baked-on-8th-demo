@@ -1,0 +1,9 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Phone frame</title>
+<style>html,body{margin:0;background:#fff}iframe{display:block;border:0}</style>
+<!-- Screenshot helper: renders ?src= at an exact phone width (headless Chrome won't make windows narrower than ~500px) -->
+<script>
+const q = new URLSearchParams(location.search);
+document.write(`<iframe src="${q.get('src')}" width="${q.get('w') || 390}" height="${q.get('h') || 844}"></iframe>`);
+</script>

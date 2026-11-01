@@ -1,0 +1,30 @@
+{
+  "events": [
+    {
+      "title": "2026 Fall Market",
+      "date": "2026-10-24",
+      "where": "at the bakery",
+      "description": "Our fall market with 30+ vendors: art, food trucks, vintage, coffee and matcha, and sweet treats. Free entry.",
+      "image": "/assets/img/event-fall-market-800.webp",
+      "image_description": "Fall Market poster: art and goods, 30+ vendors, free entry, 10am–3pm Saturday October 24th, 1512 8th Ave S",
+      "link": "",
+      "note_on_description": "Is the Fall Market held every year? If so, it could be called annual. Vendor list and free entry are from your poster.",
+      "start_time": "10:00",
+      "end_time": "15:00",
+      "note_on_date": ""
+    },
+    {
+      "title": "Sap Sap Sips Pop-up",
+      "date": "2026-09-13",
+      "where": "in front of the shop",
+      "description": "Hand-whisked matcha, specialty iced coffee, dirty soda and more.",
+      "image": "",
+      "image_description": "",
+      "link": "",
+      "note_on_description": "",
+      "start_time": "11:00",
+      "end_time": "13:00",
+      "note_on_date": "Your listing's date field says Sunday Sept 13, 11am–1pm, but its description says Sept 27, 11am–2pm. Both are past; confirm which happened."
+    }
+  ]
+}

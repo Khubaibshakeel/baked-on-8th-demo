@@ -1,0 +1,189 @@
+{
+  "cookies": [
+    {
+      "name": "Classic chocolate chip",
+      "tag": "",
+      "description": "The best in town. Don’t @ me."
+    },
+    {
+      "name": "Red velvet white chocolate",
+      "tag": "",
+      "description": "A Southern favorite in cookie form."
+    },
+    {
+      "name": "Milk’s favorite cookie",
+      "tag": "",
+      "description": "Chocolate cookie, chocolate + white chocolate chips, tons of Oreo chunks."
+    },
+    {
+      "name": "Toffee pecan",
+      "tag": "",
+      "description": "Pecans and toffee packed into our classic chocolate chip cookie."
+    },
+    {
+      "name": "Strawberry white chocolate",
+      "tag": "",
+      "description": "Like no other cookie you’ve tasted."
+    },
+    {
+      "name": "Peanut butter white chocolate",
+      "tag": "",
+      "description": "Soft peanut butter cookie with white chocolate chunks."
+    },
+    {
+      "name": "Sprinkle sugar cookie",
+      "tag": "",
+      "description": "Just like your favorite mid-mall cookie."
+    },
+    {
+      "name": "OCP",
+      "tag": "",
+      "description": "Oatmeal cream pie. Ya know the drill."
+    },
+    {
+      "name": "Gluten-friendly chocolate chip",
+      "tag": "",
+      "description": "Good, soft and full of chocolate. Please see our allergen information."
+    }
+  ],
+  "treats": [
+    {
+      "name": "Millionaire bar",
+      "tag": "",
+      "description": "Shortbread crust, caramel, chocolate ganache and sea salt.",
+      "group": "Bars"
+    },
+    {
+      "name": "Chess bar",
+      "tag": "",
+      "description": "The Southern favorite: a gooey, buttery cream cheese bar.",
+      "group": "Bars"
+    },
+    {
+      "name": "Lemon bar",
+      "tag": "",
+      "description": "Shortbread crust, lemon filling, powdered sugar.",
+      "group": "Bars"
+    },
+    {
+      "name": "Hello Dolly",
+      "tag": "",
+      "description": "Butterscotch and graham 7-layer bar. Contains pecans.",
+      "group": "Bars"
+    },
+    {
+      "name": "Oreo Dolly",
+      "tag": "",
+      "description": "Oreo-based 7-layer bar. Contains nuts.",
+      "group": "Bars"
+    },
+    {
+      "name": "Peanut butter oat bar",
+      "tag": "Vegan · gluten-friendly",
+      "description": "Rolled oats, peanut butter, granola and cranberries.",
+      "group": "Bars"
+    },
+    {
+      "name": "Strawberry pop tart",
+      "tag": "Can change with the season",
+      "description": "Fresh strawberry fruit filling. Walk-in only.",
+      "group": "Pop tarts"
+    },
+    {
+      "name": "Blueberry pop tart",
+      "tag": "Can change with the season",
+      "description": "Fresh blueberry fruit filling. Walk-in only.",
+      "group": "Pop tarts"
+    },
+    {
+      "name": "Brown sugar cinnamon pop tart",
+      "tag": "Can change with the season",
+      "description": "Cinnamon brown sugar filling. Walk-in only.",
+      "group": "Pop tarts"
+    },
+    {
+      "name": "Blondie",
+      "tag": "",
+      "description": "If a buttery chocolate chip cookie was a brownie.",
+      "group": "Brownies & Rice Krispies"
+    },
+    {
+      "name": "Fudgy brownie",
+      "tag": "",
+      "description": "Our classic brownie, full of chocolate chips.",
+      "group": "Brownies & Rice Krispies"
+    },
+    {
+      "name": "Galaxy brownie",
+      "tag": "",
+      "description": "Fudgy brownie with vanilla buttercream art. Designs vary daily.",
+      "group": "Brownies & Rice Krispies"
+    },
+    {
+      "name": "Cosmique brownie",
+      "tag": "",
+      "description": "Fudgy brownie, chocolate ganache, chocolate sprinkles.",
+      "group": "Brownies & Rice Krispies"
+    },
+    {
+      "name": "Rice Krispy",
+      "tag": "",
+      "description": "Gooey marshmallow treat with colorful sprinkles.",
+      "group": "Brownies & Rice Krispies"
+    },
+    {
+      "name": "Fruity Rice Krispy",
+      "tag": "",
+      "description": "With Fruity Pebbles and sprinkles.",
+      "group": "Brownies & Rice Krispies"
+    },
+    {
+      "name": "Peanut butter Rice Krispy",
+      "tag": "",
+      "description": "Peanut butter chips, chocolate ganache.",
+      "group": "Brownies & Rice Krispies"
+    },
+    {
+      "name": "Lemon blueberry pound cake",
+      "tag": "",
+      "description": "Packed with blueberries, topped with lemon glaze.",
+      "group": "Breads, cakes & scones"
+    },
+    {
+      "name": "Almond chocolate chip pound cake",
+      "tag": "Can change with the season",
+      "description": "Chocolate chips and almond glaze.",
+      "group": "Breads, cakes & scones"
+    },
+    {
+      "name": "Banana bread",
+      "tag": "",
+      "description": "Soft and moist, whole or sliced.",
+      "group": "Breads, cakes & scones"
+    },
+    {
+      "name": "Jewish apple cake",
+      "tag": "",
+      "description": "Apples and spices with a cream cheese drizzle.",
+      "group": "Breads, cakes & scones"
+    },
+    {
+      "name": "Cinnamon roll",
+      "tag": "",
+      "description": "Our signature buttery roll with a cream cheese swirl. Walk-in only.",
+      "group": "Breads, cakes & scones"
+    },
+    {
+      "name": "Sausage cheddar scone",
+      "tag": "Can change with the season",
+      "description": "Savory, buttery, filled with cheddar and sausage.",
+      "group": "Breads, cakes & scones"
+    },
+    {
+      "name": "Strawberry scone",
+      "tag": "Can change with the season",
+      "description": "Dried strawberries and vanilla glaze.",
+      "group": "Breads, cakes & scones"
+    }
+  ]
+}

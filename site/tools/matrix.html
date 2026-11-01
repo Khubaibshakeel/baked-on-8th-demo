@@ -1,0 +1,34 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Responsive matrix</title>
+<style>body{font:13px/1.4 system-ui;margin:16px}table{border-collapse:collapse}td,th{border:1px solid #ccc;padding:4px 8px;vertical-align:top}.ok{background:#e6f6ea}.bad{background:#fde3df}#frames{position:absolute;left:-99999px;top:0}</style>
+<h1>Responsive matrix</h1>
+<p id="state">running…</p>
+<div id="out"></div>
+<div id="frames"></div>
+<script>
+// Loads every page at every size in an iframe (media queries follow the iframe size) and runs tools/qa.js inside it.
+const PAGES = ['index.html', 'menu.html', 'order.html', 'weddings.html', 'events.html'];
+const SIZES = [[320,568],[375,667],[390,844],[430,932],[667,375],[844,390],[768,1024],[820,1180],[1024,768],[1180,820],[1280,720],[1366,768],[1440,900],[1920,1080],[2560,1440]];
+window.results = [];
+(async () => {
+  const qa = await (await fetch('qa.js?' + Date.now())).text();
+  for (const [w, h] of SIZES) for (const p of PAGES) {
+    const f = document.createElement('iframe');
+    f.width = w; f.height = h; f.style.border = 0;
+    document.getElementById('frames').append(f);
+    await new Promise((r) => { f.onload = r; f.src = '../' + p; });
+    await new Promise((r) => setTimeout(r, 700));
+    let res;
+    try { res = f.contentWindow.eval(qa); } catch (e) { res = { error: String(e) }; }
+    res.page = p; res.size = `${w}x${h}`;
+    window.results.push(res);
+    f.remove();
+  }
+  const issues = (r) => [r.error, r.hOverflow && `h-overflow ${r.hOverflow}px`, ...(r.offscreen || []).map((x) => 'offscreen ' + x), ...(r.clipped || []).map((x) => 'clipped ' + x), ...(r.headingOverflow || []).map((x) => 'heading ' + x), ...(r.smallTargets || []).map((x) => 'small ' + x), ...(r.distorted || []).map((x) => 'distorted ' + x), ...(r.broken || []).map((x) => 'broken ' + x), r.actionBarCoversContent && 'action bar covers content', r.fonts < 3 && 'fonts missing'].filter(Boolean);
+  document.getElementById('out').innerHTML = '<table><tr><th>size</th>' + PAGES.map((p) => `<th>${p}</th>`).join('') + '</tr>' +
+    SIZES.map(([w, h]) => `<tr><th>${w}x${h}</th>` + PAGES.map((p) => { const r = results.find((x) => x.page === p && x.size === `${w}x${h}`); const i = issues(r); return `<td class="${i.length ? 'bad' : 'ok'}">${i.length ? i.join('<br>') : '✓'}</td>`; }).join('') + '</tr>').join('') + '</table>';
+  window.summary = results.map((r) => ({ k: `${r.size} ${r.page}`, i: issues(r) })).filter((x) => x.i.length);
+  document.getElementById('state').textContent = `done: ${results.length} runs, ${summary.length} with issues`;
+})();
+</script>

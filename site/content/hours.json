@@ -1,0 +1,39 @@
+{
+  "rows": [
+    {
+      "days": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "opens": "08:00",
+      "closes": "19:00",
+      "online_cutoff": "18:00",
+      "note": "Your footer and Square ordering site say 8am–7pm Mon–Sat; your homepage banner says 8am–6pm, which looks like the online cutoff (order by 6pm for 7pm pickup). Confirm shop hours."
+    },
+    {
+      "days": [
+        "Sun"
+      ],
+      "opens": "10:00",
+      "closes": "16:00",
+      "online_cutoff": "15:00",
+      "note": ""
+    }
+  ],
+  "closures": [
+    {
+      "date": "2026-11-26",
+      "message": "Thanksgiving",
+      "note": "Confirm your holiday hours (Thanksgiving was added as a closed day for the demo)."
+    },
+    {
+      "date": "2026-12-25",
+      "message": "Christmas Day",
+      "note": "Confirm your holiday hours (Christmas Day was added as a closed day for the demo)."
+    }
+  ]
+}
