@@ -310,7 +310,7 @@
 
   // ---------- Map: load the Google embed only when asked (no third-party cookies until then) ----------
   $$('[data-map]').forEach((m) => $('button', m)?.addEventListener('click', () => {
-    m.innerHTML = `<iframe title="Map to Baked on 8th, 1512 8th Ave S, Nashville" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Baked+on+8th,+1512+8th+Ave+S,+Nashville,+TN+37203&output=embed"></iframe>`;
+    m.innerHTML = `<iframe title="Map to Baked on 8th, 1512 8th Ave S, Nashville" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.google.com/maps?q=Baked+on+8th,+1512+8th+Ave+S,+Nashville,+TN+37203&output=embed"></iframe>`;
   }));
 
   // ---------- Menu: phones open only the first treat group; today's case hides itself after 3 days ----------
@@ -457,11 +457,13 @@
     const saveDraft = () => {
       try {
         const d = {}; [...form.elements].forEach((el) => { if (!el.name) return; if (el.type === 'checkbox') { (d[el.name] ||= []); if (el.checked) d[el.name].push(el.value); } else d[el.name] = el.value; });
-        localStorage.setItem(DRAFT, JSON.stringify(d));
+        d._saved = Date.now(); localStorage.setItem(DRAFT, JSON.stringify(d));
       } catch { /* private mode or storage blocked: the form still works */ }
     };
     try {
-      const d = JSON.parse(localStorage.getItem(DRAFT) || 'null');
+      let d = JSON.parse(localStorage.getItem(DRAFT) || 'null');
+      // a draft holds names, email and phone on this device: forget it after 30 days (it's cleared on send too)
+      if (d && !(Date.now() - d._saved < 30 * 864e5)) { localStorage.removeItem(DRAFT); d = null; }
       if (d) [...form.elements].forEach((el) => { if (!el.name || !(el.name in d)) return; if (el.type === 'checkbox') el.checked = d[el.name].includes(el.value); else el.value = d[el.name]; });
     } catch { /* ignore a broken draft */ }
     // "Phone call" as the best way to reach you makes Phone required; back to Email, it's optional again

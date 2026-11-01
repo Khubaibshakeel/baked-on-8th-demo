@@ -20,7 +20,9 @@ window.results = [];
     await new Promise((r) => { f.onload = r; f.src = '../' + p; });
     await new Promise((r) => setTimeout(r, 700));
     let res;
-    try { res = f.contentWindow.eval(qa); } catch (e) { res = { error: String(e) }; }
+    // the pages' security policy blocks eval inside them, so run qa.js from here against the frame's document
+    const fw = f.contentWindow;
+    try { res = new Function('document', 'getComputedStyle', 'innerWidth', 'innerHeight', 'return (\n' + qa.trim().replace(/;$/, '') + '\n)')(fw.document, fw.getComputedStyle.bind(fw), fw.innerWidth, fw.innerHeight); } catch (e) { res = { error: String(e) }; }
     res.page = p; res.size = `${w}x${h}`;
     window.results.push(res);
     f.remove();

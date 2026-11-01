@@ -8,7 +8,7 @@ prices) lives in content/*.json, which the /admin editor writes. Page templates 
 Run: python tools/build.py            (from the site folder or anywhere)
      python tools/build.py --watch    (rebuild on every save, for the editor demo)
 """
-import html, json, re, sys, time
+import base64, hashlib, html, json, re, sys, time
 from pathlib import Path
 from PIL import Image, ImageOps
 
@@ -47,6 +47,19 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
+def link(u):
+    """An editor-supplied link, escaped. Only web, email and phone links get through (no javascript: or data:)."""
+    u = str(u or "").strip()
+    return esc(u) if re.match(r"(?i)(https?://|mailto:|tel:)", u) else "#"
+
+
+# The one inline script (adds the "js" class). The security policy allows it by hash, so no other inline script can run.
+JS_FLAG = "document.documentElement.classList.add('js');setTimeout(function(){if(!window.BO8)document.documentElement.classList.remove('js')},3000)"
+CSP = ("default-src 'self'; script-src 'self' 'sha256-" + base64.b64encode(hashlib.sha256(JS_FLAG.encode()).digest()).decode() + "'; "
+       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; "
+       "frame-src https://www.google.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests")
+
+
 def hm(t):
     """'18:30' -> '6:30pm', '08:00' -> '8am'"""
     h, m = (int(x) for x in t.split(":"))
@@ -71,7 +84,9 @@ def head(title, desc):
 <meta name="description" content="{html.escape(desc)}">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="robots" content="noindex, nofollow">
-<script>document.documentElement.classList.add('js');setTimeout(function(){{if(!window.BO8)document.documentElement.classList.remove('js')}},3000)</script>
+<meta http-equiv="Content-Security-Policy" content="{CSP}">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script>{JS_FLAG}</script>
 <link rel="icon" href="assets/img/favicon.ico?v={ver("assets/img/favicon.ico")}" sizes="any">
 <link rel="icon" type="image/png" href="assets/img/favicon.png?v={ver("assets/img/favicon.png")}">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v={ver("assets/img/apple-touch-icon.png")}">
@@ -298,7 +313,7 @@ def events_block(data):
         span = hm(e["start_time"]) + (f'–{hm(e["end_time"])}' if e.get("end_time") else "")
         when = f'{wd}, {MONTHS[int(mo) - 1]} {int(d)} · {span}'
         n2 = f' data-note="{esc(e["note_on_description"])}"' if e.get("note_on_description") else ""
-        link = f'\n            <p style="margin-top:12px"><a class="link" href="{esc(e["link"])}">Event details</a></p>' if e.get("link") else ""
+        link = f'\n            <p style="margin-top:12px"><a class="link" href="{link(e["link"])}">Event details</a></p>' if e.get("link") else ""
         out.append(f'''<article class="event" data-event-date="{esc(e['date'][:10])}">
           <div class="date"><b>{int(d)}</b><span>{MONTHS[int(mo) - 1]} {y}</span></div>
           <div>
@@ -399,11 +414,11 @@ def about_block(a):
                f'<b>{esc(a.get("sticker_caption", ""))}</b></div>' if st else "")
     paras = [esc(p) for p in a["paragraphs"]]
     lead, last = paras[:-1], paras[-1] if paras else ""
-    rating = lambda r: f'<a href="{esc(r["link"])}">{esc(r["text"])}</a>' if r.get("link") else esc(r["text"])
+    rating = lambda r: f'<a href="{link(r["link"])}">{esc(r["text"])}</a>' if r.get("link") else esc(r["text"])
     ratings = " · ".join(rating(r) for r in a.get("ratings", []))
-    press = ", ".join(f'<a href="{esc(p["link"])}">{esc(p["name"])}</a>' for p in a.get("press", []))
+    press = ", ".join(f'<a href="{link(p["link"])}">{esc(p["name"])}</a>' for p in a.get("press", []))
     q = a.get("quote") or {}
-    quote = (f'<blockquote class="about-quote"><p>“{esc(q["text"])}”</p><cite><a href="{esc(q["link"])}">{esc(q["source"])}</a></cite></blockquote>' if q.get("text") else "")
+    quote = (f'<blockquote class="about-quote"><p>“{esc(q["text"])}”</p><cite><a href="{link(q["link"])}">{esc(q["source"])}</a></cite></blockquote>' if q.get("text") else "")
     return f'''<section class="section band-blush about about-wide" aria-labelledby="about-title">
     <div class="wrap" data-source="{S_STORY}">
       <h2 id="about-title" class="reveal">{esc(a["heading"])}</h2>
