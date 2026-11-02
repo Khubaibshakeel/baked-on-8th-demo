@@ -15,7 +15,7 @@ python -m http.server 5508 --directory .
 | `weddings.html` | Pricing, tastings, delivery, a few wedding photos, validated inquiry the visitor sends from their email app or copies into any email, gallery |
 | `events.html` | Events auto-sorted into upcoming/past by date; with nothing scheduled it leads with the last event |
 
-The yellow **Demo · review notes** button on each page lists facts the owners need to confirm.
+Owner questions (`data-note`) and fact sources (`data-source`) stay in the templates and content for review, but the build strips them from the pages; they're collected in `pitch/review-notes.md`.
 
 ## Editing
 Owner content (cakes, seasonals, menu lists, custom-cake menu, events, hours and closures, wedding prices) is in `content/*.json`, edited through the form-based editor at `/admin` (Decap CMS): see `content/README.md`.

@@ -521,26 +521,6 @@
   }
 
 
-  // ---------- Review notes (demo only): questions for the owners, then where the page's facts come from ----------
-  const noted = $$('[data-note]');
-  const sources = [...new Set($$('[data-source]').flatMap((el) => el.dataset.source.split('; ')))];
-  // ?clean hides the demo notes for a live walkthrough (animations stay on)
-  if ((noted.length || sources.length) && !new URLSearchParams(location.search).has('clean')) {
-    const escH = (t) => t.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
-    noted.forEach((el) => { const f = document.createElement('span'); f.className = 'note-flag'; f.textContent = el.dataset.note; el.after(f); });
-    const btn = document.createElement('button');
-    btn.className = 'review-toggle'; btn.type = 'button'; btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-label', `Demo review notes: ${noted.length} to confirm`);
-    btn.innerHTML = `<span class="rt-long">Demo · review notes</span><span class="rt-short" aria-hidden="true">Notes</span> <b>${noted.length}</b>`;
-    const panel = document.createElement('div');
-    panel.className = 'notes-panel'; panel.id = 'notes-panel';
-    panel.innerHTML = (noted.length ? `<h4>To confirm with Baked on 8th (this page)</h4><ol>${noted.map((n) => `<li>${escH(n.dataset.note)}</li>`).join('')}</ol>` : '')
-      + (sources.length ? `<h4>Where this page's facts come from</h4><ul>${sources.map((x) => `<li>${escH(x)}</li>`).join('')}</ul>` : '');
-    btn.setAttribute('aria-controls', 'notes-panel');
-    btn.addEventListener('click', () => { const on = document.body.classList.toggle('show-notes'); btn.setAttribute('aria-expanded', String(on)); });
-    document.body.append(btn, panel);
-  }
-
   // ---------- Soft page transitions (skipped where the browser does cross-document view transitions) ----------
   if (!reduce && !('onpagereveal' in window)) {
     document.addEventListener('click', (e) => {

@@ -472,6 +472,9 @@ def build():
         t = re.sub(r"<!--@icon (\w+)-->", lambda m: icon(m.group(1), w=20), t)
         t = t.replace("{{SQUARE}}", SQUARE).replace("{{TEL}}", TEL).replace("{{MAPS}}", MAPS).replace("{{ELECTRIC_MIXER}}", ELECTRIC_MIXER)
         t = re.sub(r"\{\{(\w+)\}\}", lambda m: tok[m.group(1)], t)
+        # owner questions (data-note) and fact sources (data-source) stay in the content and templates for review,
+        # but never ship: they're collected in pitch/review-notes.md
+        t = re.sub(r'\s+data-(?:note|source)="[^"]*"', "", t)
         (SITE / page.name).write_text(t, encoding="utf-8")
         print("built", page.name)
 
